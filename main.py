@@ -1,4 +1,5 @@
 import asyncio
+import re 
 from EdgeGPT import Chatbot, ConversationStyle
 
 async def main():
