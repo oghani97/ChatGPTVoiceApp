@@ -3,7 +3,12 @@ from EdgeGPT import Chatbot, ConversationStyle
 
 async def main():
     bot = Chatbot(cookie_path='./cookies.json')
-    print(await bot.ask(prompt="Hello world", conversation_style=ConversationStyle.creative, wss_link="wss://sydney.bing.com/sydney/ChatHub"))
+    response = await bot.ask(prompt=input("Ask Bing AI: "), conversation_style=ConversationStyle.creative)
+    for message in response["item"]["messages"]:
+        if message["author"] == "bot":
+            bot_response = message["text"]
+    print("BOTS RESPONSE", bot_response)
+
     await bot.close()
 
 
