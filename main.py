@@ -8,7 +8,10 @@ async def main():
     for message in response["item"]["messages"]:
         if message["author"] == "bot":
             bot_response = message["text"]
-    print("BOTS RESPONSE", bot_response)
+
+    bot_response = re.sub('\[\^\d+\^\]', '', bot_response)
+
+    print("BOT'S RESPONSE:", bot_response)
 
     await bot.close()
 
